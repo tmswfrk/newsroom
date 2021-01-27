@@ -1,0 +1,23 @@
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ absURL "" }}",
+    "logo": "{{ absURL .Site.Params.Logo }}",
+    "headline": "{{ .Title }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ .Site.Params.meta.author }}"
+    },
+    "description": {{ .Site.Params.meta.description | jsonify }},
+    "mainEntityOfPage": "True",
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ .Site.Title }}",
+      "logo": {
+        "@type": "imageObject",
+        "url": "{{ absURL .Site.Params.Logo }}"
+      }
+    },
+    "keywords": "{{ delimit .Site.Params.Meta.Keywords ", "}}"
+  }

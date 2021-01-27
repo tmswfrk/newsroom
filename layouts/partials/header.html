@@ -1,9 +1,21 @@
-{{ $home := absURL "" }}
-<header class="nav">
-  <nav class="nav-menu">
-    <a href="{{ $home }}" class="nav-brand nav_item">{{ .Site.Title }}</a>
-    <div class="nav_bar-wrap">
-      <div class="nav_bar"></div>
+<header class = 'nav' {{ if .Site.Params.logo }}style="position:unset"{{ end }}>
+  <nav class = 'nav-menu'>
+    {{ if .Site.Params.logo }}
+    <!-- <a href='{{ absURL "" }}' class = 'nav_item'>
+        <img src = {{ .Site.Params.logo }} alt="{{ .Site.Params.LogoAlt }}" />
+    </a> -->
+      <a href='{{ absURL "" }}' class = 'nav_item'>
+        <picture>
+          <source srcset = "{{ .Site.Params.logo_dark }}" media="(prefers-color-scheme: dark)" />
+          <source srcset = "{{ .Site.Params.logo }}" media="(prefers-color-scheme: light)" />
+          <img src = "{{ .Site.Params.logo }}" alt = "{{ .Site.Params.logoAlt }}" />
+        </picture>
+      </a>
+    {{ else }}
+      <a href='{{ absURL "" }}' class = 'nav-brand nav_item'>{{ .Site.Title }}</a>
+    {{ end }}
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
     </div>
   </nav>
 </header>
